@@ -7,8 +7,6 @@
 
 import os
 import sys
-import string
-import random
 
 import azbn as azbnpy
 
@@ -22,6 +20,9 @@ def main(argv):
 	
 	x = 2
 	y = 3
+
+	#print(azbn.randpart())
+	#print(azbn.getMath().e)
 	
 
 	#print(3 ** 2)

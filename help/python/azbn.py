@@ -7,6 +7,7 @@ import random
 import json
 import codecs
 import time
+import math
 
 import keyword
 #keyword.kwlist
@@ -86,3 +87,9 @@ class AzbnConstructor(object):
 		chars = string.ascii_uppercase + string.ascii_lowercase + string.digits + spec
 		#size = random.randint(8, 12)
 		return ''.join(random.choice(chars) for x in range(size))
+
+	def randpart(self):
+		return random.random()
+	
+	def getMath(self):
+		return math
