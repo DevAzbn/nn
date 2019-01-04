@@ -1,0 +1,37 @@
+<html>
+
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
+	<script >
+		const model = tf.loadModel('http://dev.azbn.ru/tfjs/model.json');
+		model.then(function(m){
+			//console.dir(m);
+			//m.save('downloads://my-model-1');
+			//await m.save(tf.io.browserHTTPRequest('http://model-server.domain/upload', {method: 'PUT', headers: {'header_key_1': 'header_value_1'}}));
+			//console.log(tf.io.listModels());
+			var arr = [];
+			for(var i = 0; i < 10; i++) {
+				arr.push(Math.random());
+			}
+			arr.sort(function(a, b){
+				if (a < b) {
+					return -1;
+				} else if (a > b) {
+					return 1;
+				} else {
+					return 0;
+				}
+			});
+			console.log(arr);
+			var result = m.predict(tf.tensor2d([arr], [1, arr.length])).dataSync();
+			var sum = result[0] + result[1] + result[2];
+			console.log(result, sum);
+		});
+	</script>
+</head>
+
+<body>
+	
+</body>
+
+</html>
