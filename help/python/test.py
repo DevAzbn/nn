@@ -5,6 +5,12 @@
 #pip install virtualenvwrapper-win
 ##pyassoc
 
+#pip install SpeechRecognition
+#pip install gTTS
+#pip install PyAudio
+#pip install pyttsx3
+#pip install pypiwin32
+
 import os
 import sys
 
