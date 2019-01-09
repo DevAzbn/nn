@@ -13,6 +13,7 @@ while(True):
 	#load cascade classifier training file for haarcascade
 	#cascade = cv2.CascadeClassifier('C:/Users/azbn/AppData/Local/OpenCV/opencv/build/etc/haarcascades/haarcascade_frontalface_alt.xml')
 	#cascade2 = cv2.CascadeClassifier('C:/Users/azbn/AppData/Local/OpenCV/opencv/build/etc/haarcascades/haarcascade_eye.xml')
+	#(cv2.data.haarcascades + 'haarcascade_frontalface_alt.xml')
 	#faces = cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 	#eyes = cascade2.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 	#if len(faces):

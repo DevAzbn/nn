@@ -5,13 +5,22 @@ import sys
 import string
 import random
 import json
-import codecs
 import time
 import math
+#import codecs
 
 import keyword
 #keyword.kwlist
 #keyword.iskeyword(строка)
+
+#os = sys.platform
+#if os == "win32":
+	# Работаем с реестром Windows
+	#import _winreg
+#elif os.startswith('linux'):
+	# Выполняем Linux комманду
+	#import subprocess
+	#subprocess.Popen(["ls, -l"])
 
 
 class AzbnConstructor(object):
@@ -90,6 +99,12 @@ class AzbnConstructor(object):
 
 	def randpart(self):
 		return random.random()
+	
+	def randint(self, f, t):
+		return random.randint(f, t)
+	
+	def randitem(self, arr)
+		return random.choice(arr)
 	
 	def getMath(self):
 		return math
