@@ -21,7 +21,8 @@ import keyword
 	# Выполняем Linux комманду
 	#import subprocess
 	#subprocess.Popen(["ls, -l"])
-
+#[f for f in os.listdir(current_dir) if f.endswith('.mp3')]
+#os.walk()
 
 class AzbnConstructor(object):
 	
