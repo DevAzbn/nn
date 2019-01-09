@@ -7,7 +7,7 @@ params = ['--path=']
 
 for a in args:
 	if a.startswith(params[0]):
-		directory = a[len(params[0]):]
+		directory = 'projects/' + a[len(params[0]):]
 		if not os.path.exists(directory):
 			try:
 				os.makedirs(directory)
