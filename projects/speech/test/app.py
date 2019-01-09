@@ -39,3 +39,4 @@ def get_text():
 	return text
 
 talk(get_text())
+#talk('hello, world!')
