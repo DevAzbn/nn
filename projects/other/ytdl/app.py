@@ -12,7 +12,7 @@ for a in args:
 	if a.startswith(params[0]):
 		url = a[len(params[0]):]
 		yt = pytube.YouTube
-		r = yt(url).streams.filter(file_extension='mp4').first().download()
+		r = yt(url).streams.filter(progressive=True, file_extension='mp4').order_by('resolution').asc().first().download() #.desc()
 		print(r)
 
 ##>>> YouTube('https://youtu.be/9bZkp7q19f0').streams.first().download()
