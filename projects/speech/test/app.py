@@ -2,6 +2,7 @@ import speech_recognition as sr
 import os
 import sys
 import pyttsx3
+#from espeak import espeak
 
 rec = sr.Recognizer()
 
@@ -10,22 +11,23 @@ def talk(words):
 	eng = pyttsx3.init(debug = True)
 	voices = eng.getProperty('voices')
 	for voice in voices:
-		
-		print(voice.id)
+		if voice.id == 'russian':
 
-		eng.setProperty('voice', voice.id)
+			print(voice.id)
 
-		rate = eng.getProperty('rate')
-		eng.setProperty('rate', rate+50)
+			eng.setProperty('voice', voice.id)
 
-		volume = eng.getProperty('volume')
-		eng.setProperty('volume', 1.0)
+			rate = eng.getProperty('rate')
+			eng.setProperty('rate', rate+50)
 
-		eng.say(words)
+			volume = eng.getProperty('volume')
+			eng.setProperty('volume', 1.0)
 
-		eng.runAndWait()
+			eng.say(words)
 
-#talk('Настя, хватит кушать!')
+			eng.runAndWait()
+
+talk('Синтезатор espeak используется в качестве синтезатора по умолчанию в некоторых распространённых системах, среди которых Android и Ubuntu Linux.')
 def get_text():
 	with sr.Microphone() as source:
 		print('Wait command')
@@ -38,5 +40,5 @@ def get_text():
 		text = 'Я не поняла'
 	return text
 
-talk(get_text())
+#talk(get_text())
 #talk('hello, world!')
