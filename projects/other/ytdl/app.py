@@ -15,6 +15,9 @@ for a in args:
 		r = yt(url).streams.filter(progressive=True, file_extension='mp4').order_by('resolution').asc().first().download() #.desc()
 		print(r)
 
+#if not os.path.exists(path):
+#	os.makedirs(path)
+
 ##>>> YouTube('https://youtu.be/9bZkp7q19f0').streams.first().download()
 
 #>>> yt = YouTube('http://youtube.com/watch?v=9bZkp7q19f0')
