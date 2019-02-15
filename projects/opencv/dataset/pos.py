@@ -113,7 +113,7 @@ def main(d):
 		str = ''
 		for l in result:
 			for i in result[l]:
-				str = str + "./{} 1 {} {} {} {}".format(d + '/' + f, i[0][0], i[0][1], i[1][0], i[1][1]) + "\n"
+				str = str + "./pos/{} 1 {} {} {} {}".format(l, i[0][0], i[0][1], i[1][0], i[1][1]) + "\n"
 		with open(dpath + '/pos.txt', 'w') as fi:
 			fi.write(str)
 		cv2.destroyAllWindows()
