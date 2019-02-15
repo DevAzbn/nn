@@ -85,6 +85,47 @@ def main(d):
 		windowName = filename
 
 		image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
+
+
+
+		# параметры цветового фильтра
+		hsv_min = np.array((0, 45, 170), np.uint8)
+		hsv_max = np.array((35, 105, 250), np.uint8)
+
+		hsv = cv2.cvtColor( image, cv2.COLOR_BGR2HSV ) # меняем цветовую модель с BGR на HSV 
+		thresh = cv2.inRange( hsv, hsv_min, hsv_max ) # применяем цветовой фильтр
+
+		# ищем контуры и складируем их в переменную contours
+		_, contours, hierarchy = cv2.findContours( thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+		# # вычисляем моменты изображения
+		# moments = cv2.moments(thresh, 1)
+		# dM01 = moments['m01']
+		# dM10 = moments['m10']
+		# dArea = moments['m00']
+		# # будем реагировать только на те моменты,
+		# # которые содержать больше 100 пикселей
+		# if dArea > 50:
+		# 	x = int(dM10 / dArea)
+		# 	y = int(dM01 / dArea)
+		# 	cv2.circle(image, (x, y), 10, (0,0,255), -1)
+
+		# перебираем все найденные контуры в цикле
+		for cnt in contours:
+			if(len(cnt) < 100):
+				rect = cv2.minAreaRect(cnt) # пытаемся вписать прямоугольник
+				box = cv2.boxPoints(rect) # поиск четырех вершин прямоугольника
+				box = np.int0(box) # округление координат
+				cv2.drawContours(image,[box],0,(255,0,0),2) # рисуем прямоугольник
+
+		# отображаем контуры поверх изображения
+		# cv2.drawContours( image, contours, -1, (255,0,0), 1, cv2.LINE_AA, hierarchy, 1 )
+
+		#image = thresh
+
+
+
+
 		image_ = image.copy()
 		image__ = image.copy()
 		rimage = image_
