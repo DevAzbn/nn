@@ -34,6 +34,9 @@ def main(d):
 		image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
 		gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
+		# gray = cv2.GaussianBlur(gray, (5,5), cv2.BORDER_DEFAULT)
+		# gray = np.hstack((image, gray))
+
 		items = cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 		if len(items):
 			for (x, y, w, h) in items:
