@@ -37,6 +37,13 @@ def main(d):
 		# gray = cv2.GaussianBlur(gray, (5,5), cv2.BORDER_DEFAULT)
 		# gray = np.hstack((image, gray))
 
+		# kernel = np.ones((5,5), np.float32) / 25
+		# gray = cv2.filter2D(gray,-1,kernel)
+
+		# image = cv2.medianBlur(image, 15)
+
+		# image = cv2.bilateralFilter(image,9,75,75)
+
 		items = cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 		if len(items):
 			for (x, y, w, h) in items:
