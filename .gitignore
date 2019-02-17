@@ -4,4 +4,5 @@
 **__pycache__**
 **/__pycache__/**
 .vscode
+projects/opencv/dataset/projects/watermark
 #data/*

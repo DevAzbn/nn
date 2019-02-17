@@ -37,6 +37,10 @@ def draw_shape(event, x, y, flags, param):
 	elif event == cv2.EVENT_MOUSEMOVE:
 		if drawing == True:
 			(x1, y1) = x, y
+			if(x1 > image.shape[1]):
+				x1 = image.shape[1]
+			if(y1 > image.shape[0]):
+				y1 = image.shape[0]
 			if (x1 > x0) & (y1 > y0):
 				
 				image__ = image.copy()
@@ -55,6 +59,10 @@ def draw_shape(event, x, y, flags, param):
 	elif event == cv2.EVENT_LBUTTONUP:
 		if drawing == True:
 			(x1, y1) = x, y
+			if(x1 > image.shape[1]):
+				x1 = image.shape[1]
+			if(y1 > image.shape[0]):
+				y1 = image.shape[0]
 			drawing = False
 			print(x0, y0, x1, y1)
 			cv2.rectangle(image_, (x0, y0), (x1, y1), (0, 0, 255), 2)
@@ -88,40 +96,40 @@ def main(d):
 
 
 
-		# параметры цветового фильтра
-		hsv_min = np.array((0, 45, 170), np.uint8)
-		hsv_max = np.array((35, 105, 250), np.uint8)
+		# # параметры цветового фильтра
+		# hsv_min = np.array((0, 45, 170), np.uint8)
+		# hsv_max = np.array((35, 105, 250), np.uint8)
 
-		hsv = cv2.cvtColor( image, cv2.COLOR_BGR2HSV ) # меняем цветовую модель с BGR на HSV 
-		thresh = cv2.inRange( hsv, hsv_min, hsv_max ) # применяем цветовой фильтр
+		# hsv = cv2.cvtColor( image, cv2.COLOR_BGR2HSV ) # меняем цветовую модель с BGR на HSV 
+		# thresh = cv2.inRange( hsv, hsv_min, hsv_max ) # применяем цветовой фильтр
 
-		# ищем контуры и складируем их в переменную contours
-		_, contours, hierarchy = cv2.findContours( thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+		# # ищем контуры и складируем их в переменную contours
+		# _, contours, hierarchy = cv2.findContours( thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
-		# # вычисляем моменты изображения
-		# moments = cv2.moments(thresh, 1)
-		# dM01 = moments['m01']
-		# dM10 = moments['m10']
-		# dArea = moments['m00']
-		# # будем реагировать только на те моменты,
-		# # которые содержать больше 100 пикселей
-		# if dArea > 50:
-		# 	x = int(dM10 / dArea)
-		# 	y = int(dM01 / dArea)
-		# 	cv2.circle(image, (x, y), 10, (0,0,255), -1)
+		# # # вычисляем моменты изображения
+		# # moments = cv2.moments(thresh, 1)
+		# # dM01 = moments['m01']
+		# # dM10 = moments['m10']
+		# # dArea = moments['m00']
+		# # # будем реагировать только на те моменты,
+		# # # которые содержать больше 100 пикселей
+		# # if dArea > 50:
+		# # 	x = int(dM10 / dArea)
+		# # 	y = int(dM01 / dArea)
+		# # 	cv2.circle(image, (x, y), 10, (0,0,255), -1)
 
-		# перебираем все найденные контуры в цикле
-		for cnt in contours:
-			if(len(cnt) < 100):
-				rect = cv2.minAreaRect(cnt) # пытаемся вписать прямоугольник
-				box = cv2.boxPoints(rect) # поиск четырех вершин прямоугольника
-				box = np.int0(box) # округление координат
-				cv2.drawContours(image,[box],0,(255,0,0),2) # рисуем прямоугольник
+		# # перебираем все найденные контуры в цикле
+		# for cnt in contours:
+		# 	if(len(cnt) < 100):
+		# 		rect = cv2.minAreaRect(cnt) # пытаемся вписать прямоугольник
+		# 		box = cv2.boxPoints(rect) # поиск четырех вершин прямоугольника
+		# 		box = np.int0(box) # округление координат
+		# 		cv2.drawContours(image,[box],0,(255,0,0),2) # рисуем прямоугольник
 
-		# отображаем контуры поверх изображения
-		# cv2.drawContours( image, contours, -1, (255,0,0), 1, cv2.LINE_AA, hierarchy, 1 )
+		# # отображаем контуры поверх изображения
+		# # cv2.drawContours( image, contours, -1, (255,0,0), 1, cv2.LINE_AA, hierarchy, 1 )
 
-		#image = thresh
+		# #image = thresh
 
 
 
@@ -153,8 +161,14 @@ def main(d):
 			json.dump(result, fi, ensure_ascii = False)
 		str = ''
 		for l in result:
+			# for i in result[l]:
+			# 	str = str + "./pos/{} 1 {} {} {} {}".format(l, i[0][0], i[0][1], i[1][0] - i[0][0], i[1][1] - i[0][1]) + "\n"
+			
+			lcoord = ''
 			for i in result[l]:
-				str = str + "./pos/{} 1 {} {} {} {}".format(l, i[0][0], i[0][1], i[1][0], i[1][1]) + "\n"
+				lcoord = lcoord + " {} {} {} {}".format(i[0][0], i[0][1], i[1][0] - i[0][0], i[1][1] - i[0][1])
+			str = str + "pos/{} {}{}".format(l, len(result[l]), lcoord) + "\n"
+			
 		with open(dpath + '/pos.txt', 'w') as fi:
 			fi.write(str)
 		cv2.destroyAllWindows()

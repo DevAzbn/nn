@@ -1,0 +1,10 @@
+X:\dev\opencv\build\x64\vc15\bin\opencv_createsamples -info projects/watermark/pos.txt -w 45 -h 20 -vec projects/watermark/pos.vec
+X:\dev\opencv\build\x64\vc15\bin\opencv_createsamples -w 45 -h 20 -vec projects/watermark/pos.vec
+X:\dev\opencv\build\x64\vc15\bin\opencv_traincascade -numStages 12 -numPos 60 -numNeg 470 -minHitRate 0.95 -maxFalseAlarmRate 0.2 -featureType LBP -w 45 -h 20 -data cascade -vec pos.vec -bg neg.txt
+
+
+c:/OpenCV/build/x64/vc14/bin/opencv_createsamples.exe -info ./positives/default.txt -vec ./vectors/default.vec -w 32 -h 32 -num 1300 -bgcolor 0 -bgthresh 255 -maxxangle 1.1 -maxyangle 1.1 -maxzangle 0.5
+c:/OpenCV/build/x64/vc14/bin/opencv_traincascade.exe -numStages 10 -numPos 1000 -numNeg 1000 -w 32 -h 32 -minHitRate 0.995 -maxFalseAlarmRate 0.2 -mode ALL -featureType LBP -acceptanceRatioBreakValue -1 -numThreads 4 -maxDepth 8 -maxWeakCount 128 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -data ./cascades/default/ -vec ./vectors/default.vec -bg ./negatives/default.txt
+
+opencv_createsamples -info ./positives/default.txt -vec ./vectors/default.vec -w 32 -h 32 -num 1300 -bgcolor 0 -bgthresh 255 -maxxangle 1.1 -maxyangle 1.1 -maxzangle 0.5
+opencv_traincascade -numStages 16 -numPos 1000 -numNeg 1000 -w 32 -h 32 -minHitRate 0.995 -maxFalseAlarmRate 0.5 -mode ALL -featureType LBP -acceptanceRatioBreakValue -1 -numThreads 4 -maxDepth 8 -maxWeakCount 128 -precalcValBufSize 2048 -precalcIdxBufSize 2048 -data ./cascades/default/ -vec ./vectors/default.vec -bg ./negatives/default.txt
