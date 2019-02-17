@@ -167,7 +167,7 @@ def main(d):
 			lcoord = ''
 			for i in result[l]:
 				lcoord = lcoord + " {} {} {} {}".format(i[0][0], i[0][1], i[1][0] - i[0][0], i[1][1] - i[0][1])
-			str = str + "./pos/{} {}{}".format(l, len(result[l]), lcoord) + "\n"
+			str = str + dpath + "/pos/{} {}{}".format(l, len(result[l]), lcoord) + "\n"
 			
 		with open(dpath + '/pos.txt', 'w') as fi:
 			fi.write(str)

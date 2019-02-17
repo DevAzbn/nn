@@ -25,7 +25,7 @@ def main(d):
 
 		str = ''
 		for l in result:
-			str = str + "./neg/{}".format(l) + "\n"
+			str = str + dpath + "/neg/{}".format(l) + "\n"
 		with open(dpath + '/neg.txt', 'w') as fi:
 			fi.write(str)
 
