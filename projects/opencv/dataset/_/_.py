@@ -24,6 +24,11 @@ def main():
 		
 		# gray = cv2.GaussianBlur(gray, (13, 13), cv2.BORDER_DEFAULT)
 
+		b,g,r = cv2.split(gray)
+		blur = cv2.blur(r, (7, 7))
+		retval, mask = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+		gray = cv2.bitwise_and(gray, gray, mask = mask)
+		
 		max = np.absolute(gray).max()
 		gray = gray / max
 		gray = np.round(gray)
@@ -33,6 +38,8 @@ def main():
 		gray = gray * m
 
 		gray = np.uint8(gray)
+
+		
 
 		# cv2.imwrite('gray.jpg', gray)
 		# gray = cv2.imread('gray.jpg', cv2.IMREAD_UNCHANGED)
@@ -83,7 +90,7 @@ def main():
 				rect = cv2.minAreaRect(cnt) # пытаемся вписать прямоугольник
 				box = cv2.boxPoints(rect) # поиск четырех вершин прямоугольника
 				box = np.int0(box) # округление координат
-				cv2.drawContours(gray, [box], 0, (255, 0, 0), 1) # рисуем прямоугольник
+				# cv2.drawContours(gray, [box], 0, (255, 0, 0), 1) # рисуем прямоугольник
 
 				M = cv2.moments(cnt)
 				dM01 = M['m01']
@@ -94,7 +101,9 @@ def main():
 				if dArea > 1:
 					x = int(dM10 / dArea)
 					y = int(dM01 / dArea)
-					cv2.circle(gray, (x, y), 10, (255, 0, 0), -1)
+					(x,y), radius = cv2.minEnclosingCircle(cnt)
+					cv2.circle(gray, (int(x), int(y)), 5, (255, 0, 0), -1)
+					# gray = cv2.bitwise_and(gray, gray, mask = mask)
 
 
 		# # отображаем контуры поверх изображения
