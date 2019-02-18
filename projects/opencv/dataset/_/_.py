@@ -24,10 +24,10 @@ def main():
 		
 		# gray = cv2.GaussianBlur(gray, (13, 13), cv2.BORDER_DEFAULT)
 
-		b,g,r = cv2.split(gray)
-		blur = cv2.blur(r, (7, 7))
-		retval, mask = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
-		gray = cv2.bitwise_and(gray, gray, mask = mask)
+		# b,g,r = cv2.split(gray)
+		# blur = cv2.blur(r, (7, 7))
+		# retval, mask = cv2.threshold(blur, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+		# gray = cv2.bitwise_and(gray, gray, mask = mask)
 		
 		max = np.absolute(gray).max()
 		gray = gray / max
@@ -61,8 +61,8 @@ def main():
 		# gray = cv2.warpAffine(gray, M, (cols, rows))
 
 		# параметры цветового фильтра
-		hsv_min = np.array((0, 0, 255), np.uint8)
-		hsv_max = np.array((0, 0, 255), np.uint8)
+		hsv_min = np.array((0, 0, 0), np.uint8) #(0, 0, 255)
+		hsv_max = np.array((2, 2, 2), np.uint8) #(0, 0, 255)
 
 		hsv = cv2.cvtColor( gray, cv2.COLOR_BGR2HSV ) # меняем цветовую модель с BGR на HSV 
 		thresh = cv2.inRange( hsv, hsv_min, hsv_max ) # применяем цветовой фильтр
@@ -86,7 +86,7 @@ def main():
 
 		# перебираем все найденные контуры в цикле
 		for cnt in contours:
-			if(True):
+			if len(cnt) == 3:
 				rect = cv2.minAreaRect(cnt) # пытаемся вписать прямоугольник
 				box = cv2.boxPoints(rect) # поиск четырех вершин прямоугольника
 				box = np.int0(box) # округление координат
@@ -101,7 +101,7 @@ def main():
 				if dArea > 1:
 					x = int(dM10 / dArea)
 					y = int(dM01 / dArea)
-					(x,y), radius = cv2.minEnclosingCircle(cnt)
+					# (x,y), radius = cv2.minEnclosingCircle(cnt)
 					cv2.circle(gray, (int(x), int(y)), 5, (255, 0, 0), -1)
 					# gray = cv2.bitwise_and(gray, gray, mask = mask)
 
@@ -111,7 +111,7 @@ def main():
 		
 		# # edges = cv2.Canny(gray, 0, 150, apertureSize = 3)
 		# # gray = cv2.inpaint(gray, edges, 3, cv2.INPAINT_TELEA)
-
+		gray = cv2.cvtColor(gray, cv2.COLOR_BGR2GRAY)
 		cv2.imshow(windowName, gray)
 		
 		k = cv2.waitKey(40)
