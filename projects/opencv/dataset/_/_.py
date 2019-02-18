@@ -39,6 +39,10 @@ def main():
 
 		gray = np.uint8(gray)
 
+		# _t = cv2.cvtColor(gray, cv2.COLOR_BGR2GRAY)
+		# _r, _t = cv2.threshold(_t, 245, 255, cv2.THRESH_BINARY)
+		# cv2.imshow('t', _t)
+
 		
 
 		# cv2.imwrite('gray.jpg', gray)
