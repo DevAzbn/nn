@@ -19,7 +19,7 @@ cv2.createTrackbar('s2', 'settings', 255, 255, nothing)
 cv2.createTrackbar('v2', 'settings', 255, 255, nothing)
 crange = [0,0,0, 0,0,0]
 
-img = cv2.imread('./projects/test/pos/photo.jpg', cv2.IMREAD_UNCHANGED) #IMREAD_GRAYSCALE
+img = cv2.imread('./gray.jpg', cv2.IMREAD_UNCHANGED) #IMREAD_GRAYSCALE
 img = cv2.GaussianBlur(img,(5,5), cv2.BORDER_DEFAULT)
 
 while True:

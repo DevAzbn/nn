@@ -32,12 +32,12 @@ def main(d):
 			filename = dpath + '/' + _sp + '/' + f
 			image = cv2.imread(filename, cv2.IMREAD_UNCHANGED)
 
-			degr = randint(15, 45)
+			degr = randint(5, 35)
 
 			rows = image.shape[0]
 			cols = image.shape[1]
 
-			M = cv2.getRotationMatrix2D((cols / 2, rows / 2), degr, 1)
+			M = cv2.getRotationMatrix2D((cols / 2, rows / 2), degr, 0.85)
 			dst = cv2.warpAffine(image, M, (cols, rows))
 
 			nname = dpath + '/' + _sp + '/rotate_' + str(i) + '.jpg'
