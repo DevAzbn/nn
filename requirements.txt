@@ -9,3 +9,4 @@ tensorflowjs
 pytube
 speech_recognition
 pyttsx3
+mysqlclient
