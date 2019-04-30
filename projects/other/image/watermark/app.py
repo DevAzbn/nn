@@ -9,6 +9,7 @@ def get_watermarked(i_img, wm_img, wm_percent = 0.25):
 	i_img_name, i_img_ext = os.path.splitext(i_img)
 	# print("{} {}".format(i_img_name, i_img_ext))
 	o_img = '{}_wm{}'.format(i_img_name, i_img_ext)
+	o_img_webp = '{}_wm{}'.format(i_img_name, '.webp')
 
 	pos = (0, 0)
 
@@ -35,6 +36,7 @@ def get_watermarked(i_img, wm_img, wm_percent = 0.25):
 		transparent = transparent.convert('RGB')
 	# transparent.show()
 	transparent.save(o_img)
+	transparent.save(o_img_webp, 'WEBP')
 
 	return o_img
 
@@ -52,8 +54,11 @@ def get_resized(i_img, wsize, crop):
 
 	o_img = '{}/{}_{}_rs{}'.format(i_img_dname, wsize, hsize, i_img_ext)
 
-	rs = i.resize((wsize, hsize))
-	rs.save(o_img)
+	# rs = i.resize((wsize, hsize))
+	# rs.save(o_img)
+
+	i.thumbnail((wsize, hsize))
+	i.save(o_img)
 
 	return o_img
 
@@ -61,7 +66,7 @@ def get_resized(i_img, wsize, crop):
 
 if __name__ == '__main__':
 	image_wm = './watermark.png'
-	image_src = './../../image/watermark/origin.jpg'
+	image_src = './../../image/watermark/origin.png'
 
 	wm = get_watermarked(image_src, image_wm)
 	get_resized(wm, 300, True)
