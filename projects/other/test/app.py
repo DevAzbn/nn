@@ -5,6 +5,7 @@ import subprocess as sbp
 sys.path.append( os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'common') )
 
 from azbn import azbn
+from db.mysql import connection
 
 # print(azbn.isWin())
 # print(azbn.now())
