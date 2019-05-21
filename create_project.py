@@ -13,6 +13,8 @@ for a in args:
 				os.makedirs(directory)
 				with open(directory + '/.gitkeep', 'w') as f:
 					f.write('')
+				with open(directory + '/app.py', 'w') as f:
+					f.write('')
 			except Exception as e:
 				print(e)
 			else:
