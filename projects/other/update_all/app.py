@@ -33,4 +33,3 @@ for pkg in pkgs:
 # 	if __name__ == '__main__':
 # 		serv = Srvstat()
 # 		serv.process()
-	
