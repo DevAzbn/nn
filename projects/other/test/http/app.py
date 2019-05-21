@@ -2,34 +2,36 @@
 import json
 import http.client
 
-conn = http.client.HTTPSConnection('api.ipify.org', timeout = 10, check_hostname = False)
+if __name__ == '__main__':
 
-payload = '{}'
-headers = {
-	# 'authorization': "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
-	'content-type': "application/json",
-	'accept': "application/json"
-}
+	conn = http.client.HTTPSConnection('api.ipify.org', timeout = 10, check_hostname = False)
 
-# path = path + "?"+ payload if reqType == "GET" and payload else path
-conn.request('GET', '/?format=json', payload, headers)
+	payload = '{}'
+	headers = {
+		# 'authorization': "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
+		'content-type': "application/json",
+		'accept': "application/json"
+	}
 
-res = conn.getresponse()
-data = res.read()
-conn.close()
-data = data.decode('utf-8')
-data = json.loads(data)
+	# path = path + "?"+ payload if reqType == "GET" and payload else path
+	conn.request('GET', '/?format=json', payload, headers)
 
-print(data['ip'])
+	res = conn.getresponse()
+	data = res.read()
+	conn.close()
+	data = data.decode('utf-8')
+	data = json.loads(data)
+
+	print(data['ip'])
 
 
-# conn = http.client.HTTPSConnection('api.infobip.com')
+	# conn = http.client.HTTPSConnection('api.infobip.com')
 
-# payload = '{\"from\":\"InfoSMS\",\"to\":\"41793026727\",\"text\":\"Test SMS.\"}'
-# headers = {
-# 	'authorization': "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
-# 	'content-type': "application/json",
-# 	'accept': "application/json"
-# }
+	# payload = '{\"from\":\"InfoSMS\",\"to\":\"41793026727\",\"text\":\"Test SMS.\"}'
+	# headers = {
+	# 	'authorization': "Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==",
+	# 	'content-type': "application/json",
+	# 	'accept': "application/json"
+	# }
 
-# conn.request('POST', '/sms/1/text/single', payload, headers)
+	# conn.request('POST', '/sms/1/text/single', payload, headers)

@@ -1,3 +1,5 @@
 import urllib.request
-content = urllib.request.urlopen("https://ya.ru/").read()
-print(content)
+
+if __name__ == '__main__':
+	content = urllib.request.urlopen("https://ya.ru/").read()
+	print(content)
