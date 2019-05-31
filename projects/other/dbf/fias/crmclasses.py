@@ -113,7 +113,7 @@ class ImportAdr(ImportEntity):
 		# if(self._region_code):
 		# 	res_arr.append(str(self._region_code))
 		if(self._parent):
-			res_arr.append(self._parent.treePath())
+			res_arr.append(self._parent.treePathTitle())
 		# res_arr.append(self.uid)
 		res_arr.append(self.title)
 		res = '/'.join(res_arr)
@@ -125,7 +125,7 @@ class ImportAdr(ImportEntity):
 		# if(self._region_code):
 		# 	res_arr.append(str(self._region_code))
 		if(self._parent):
-			res_arr.append(self._parent.treePath())
+			res_arr.append(self._parent.treePathUid())
 		res_arr.append(self.uid)
 		res = '/'.join(res_arr)
 		return res

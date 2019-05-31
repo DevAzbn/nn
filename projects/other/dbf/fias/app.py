@@ -83,7 +83,7 @@ def save_adrs_table(reg_uid = 0, reg_crm_id = 0):
 
 	for adr_uid in adrs:
 		adr = adrs[adr_uid]
-		tree_path = adr.treePath()
+		tree_path = adr.treePathTitle()
 		d = adr.to_dict()
 		fdir = 'data/{}/{}'.format(reg_uid, tree_path)
 		fpath = '{}/adr.json'.format(fdir)
@@ -112,7 +112,19 @@ if __name__ == '__main__':
 	regions = {
 		'57' : {
 			'crm_id' : 50,
-		}
+		},
+		'36' : {
+			'crm_id' : 14,
+		},
+		'23' : {
+			'crm_id' : 32,
+		},
+		'77' : {
+			'crm_id' : 41,
+		},
+		'78' : {
+			'crm_id' : 58,
+		},
 	}
 	for reg_uid in regions:
 		
