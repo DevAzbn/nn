@@ -91,7 +91,7 @@ class ImportAdr(ImportEntity):
 			bld = {}
 			bld['title'] = b_num_str
 			bld['uid'] = b.houseguid.strip()
-			bld['status'] = b.strstatus
+			bld['st'] = b.strstatus
 			bld['nums'] = b_num
 			# bld['parent'] = b.aoguid.strip()
 			# if(b_num_stran_num > 1):
