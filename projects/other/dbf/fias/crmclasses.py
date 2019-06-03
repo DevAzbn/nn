@@ -81,6 +81,10 @@ class ImportAdr(ImportEntity):
 			b.buildnum.strip().lower(),
 			b.strucnum.strip().lower(),
 		)
+		b_num_stran_num = 0
+		for m in b_num:
+			if(len(m) > 0):
+				b_num_stran_num = b_num_stran_num + 1
 		b_num_str = ' '.join(b_num)
 		b_num_str = b_num_str.strip().lower()
 		if(b_num_str not in self.buildings):
@@ -90,6 +94,11 @@ class ImportAdr(ImportEntity):
 			bld['status'] = b.strstatus
 			bld['nums'] = b_num
 			# bld['parent'] = b.aoguid.strip()
+			# if(b_num_stran_num > 1):
+			# 	bld['st_num'] = 1
+			# 	print('{}, {}, {}, {}'.format(self.title, '-'.join(bld['nums']), bld['status'], self.uid))
+			# else:
+			# 	bld['st_num'] = 0
 			self.buildings[b_num_str] = bld
 	
 	def to_dict(self):
