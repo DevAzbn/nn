@@ -85,8 +85,8 @@ def save_adrs_table(reg_uid = 0, reg_crm_id = 0):
 		adr = adrs[adr_uid]
 		tree_path = adr.treePathTitle()
 		d = adr.to_dict()
-		fdir = 'data/{}/{}'.format(reg_uid, tree_path)
-		fpath = '{}/adr.json'.format(fdir)
+		fdir = 'data/{}'.format(tree_path)
+		fpath = '{}/item.json'.format(fdir)
 		if(not os.path.exists(fdir)):
 			os.makedirs(fdir, 0o755)
 		with open(fpath, 'w') as file:
@@ -101,7 +101,8 @@ def save_adrs_table(reg_uid = 0, reg_crm_id = 0):
 if __name__ == '__main__':
 	# https://habr.com/ru/post/333424/
 	src = {
-		'dir' : '/home/azbn/www/tmp/fias/dbf',
+		# 'dir' : '/home/azbn/www/tmp/fias/dbf',
+		'dir' : 'X:\\dev\\OSPanel\\domains\\crm.localhost\\var\\app\\cache\\adrs\\src',
 		'ext' : 'DBF',
 		'files' : {
 			'adrs' : 'ADDROB',
