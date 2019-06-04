@@ -13,7 +13,7 @@ class ImportEntity(object):
 		self._row = row
 		self._region_code = None
 		self._parent = None
-		self.title = row.formalname.strip()
+		self.title = row.formalname.strip().encode('utf8')
 		self.uid = row.aoguid.strip()
 		self.parent_uid = row.parentguid.strip()
 	
@@ -49,7 +49,7 @@ class ImportAdr(ImportEntity):
 		self._row = row
 		self._region_code = None
 		self._parent = None
-		self.title = row.formalname.strip()
+		self.title = row.formalname.strip().encode('utf8')
 		self.uid = row.aoguid.strip()
 		self.parent_uid = row.parentguid.strip()
 		self.code = row.code.strip()
