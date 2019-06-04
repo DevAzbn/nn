@@ -1,3 +1,4 @@
+
 class ImportEntity(object):
 	
 	# _row = None

@@ -26,7 +26,7 @@ def parse_adrs_table(reg_uid = 0, reg_crm_id = 0, file = ''):
 	adrs = {}
 	blds = {}
 	
-	table = dbf.Table(filename = file)
+	table = dbf.Table(filename = file, codepage = 'cp866')
 	count = 0
 	table.open()
 	for row in table:
@@ -57,7 +57,7 @@ def parse_blds_table(reg_uid = 0, reg_crm_id = 0, file = ''):
 	# adrs = {}
 	blds = {}
 
-	table = dbf.Table(filename = file)
+	table = dbf.Table(filename = file, codepage = 'cp866')
 	count = 0
 	table.open()
 	for row in table:
