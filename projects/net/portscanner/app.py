@@ -8,9 +8,21 @@ def scan_port(ip, port):
 	try:
 		connect = sock.connect((ip, port))
 		print('Port {} is open'.format(port))
+		# result = sock.connect_ex((ip, port))
+		# if result == 0:
+		# 	print "Port {}: 	 Open".format(port)
 		connect.close()
 	except:
 		pass
+	# except KeyboardInterrupt:
+	# 	print "You pressed Ctrl+C"
+	# 	sys.exit()
+	# except socket.gaierror:
+	# 	print 'Hostname could not be resolved. Exiting'
+	# 	sys.exit()
+	# except socket.error:
+	# 	print "Couldn't connect to server"
+	# 	sys.exit()
 
 ip = '192.168.0.1'
 
