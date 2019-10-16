@@ -12,3 +12,4 @@ pyttsx3
 mysqlclient
 pyDBF
 openpyxl
+docxtpl
