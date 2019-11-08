@@ -13,3 +13,17 @@ mysqlclient
 pyDBF
 openpyxl
 docxtpl
+MySQL-python
+importlib
+types
+itertools
+dbf
+geocoder
+PIL
+psutil
+shutil
+requests
+magic
+lxml
+asyncio
+pyppeteer
