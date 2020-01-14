@@ -1,0 +1,3 @@
+numpy np_utils json ftplib cv2 matplotlib tensorflow tensorflowjs
+pytube speech_recognition pyttsx3 mysqlclient pyDBF openpyxl docxtpl MySQL-python importlib types
+itertools dbf geocoder PIL psutil shutil requests magic lxml asyncio pyppeteer

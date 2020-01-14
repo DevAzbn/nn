@@ -1,6 +1,8 @@
 numpy
 np_utils
-python-opencv
+json
+ftplib
+cv2
 matplotlib
 tensorflow
 tensorflowjs
